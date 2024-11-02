@@ -1,0 +1,30 @@
+
+    <section class="p-2 rounded-md flex flex-col justify-around text-ellipsis overflow-hidden"
+             th:fragment="mainGrid">
+        <hr class="py-1 border-t-2"/>
+        <img th:src="${article.image}" alt=""
+        class="h-60 w-full object-cover rounded-md sm:h-52">
+        <h2 class="font-bold md:h-12 text-ellipsis overflow-hidden">
+            <a th:href="${isAdmin} ? @{/admin/article/{title}(title=${article.title})} : @{/article/{title}(title=${article.title})}"
+               th:text="${article.title}"></a>
+        </h2>
+        <span class="font-semibold cursor-pointer">
+            <a th:href="${isAdmin} ? @{/admin/article/{title}(title=${article.title})} : @{/article/{title}(title=${article.title})}"
+               th:text="${article.formattedCreatedAt}"
+               class="mt-2 text-xs"></a>
+        </span>
+        <p th:text="${article.summary}" class="mt-1 min-h-8 max-h-20 text-sm text-ellipsis overflow-hidden"></p>
+
+        <a th:href="${isAdmin} ? @{/admin/article/{title}(title=${article.title})} : @{/article/{title}(title=${article.title})}"
+           class="mt-2 py-1 px-2 rounded-lg font-bold text-white text-sm text-center cursor-pointer
+            bg-slate-800 hover:bg-slate-700 active:bg-slate-600">Read more</a>
+
+        <a th:href="@{/admin/article/{title}/edit(title=${article.title})}" th:if="${isAdmin}"
+           class="mt-2 py-1 px-2 rounded-lg font-bold text-white text-sm text-center cursor-pointer
+            bg-slate-800 hover:bg-slate-700 active:bg-slate-600">Edit article</a>
+
+        <a th:href="@{/admin/article/{title}/delete(title=${article.title})}" th:if="${isAdmin}"
+           class="mt-2 py-1 px-2 rounded-lg font-bold text-white text-sm text-center cursor-pointer
+            bg-slate-800 hover:bg-slate-700 active:bg-slate-600">Delete Article</a>
+    </section>
+

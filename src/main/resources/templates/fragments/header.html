@@ -1,0 +1,50 @@
+<header class="p-2 bg-gradient-to-r from-slate-800 via-slate-600 to-slate-800 text-white
+    md:px-10 md:py-4 md:flex md:justify-between md:items-center bg-yellow-300"
+th:fragment="header"
+>
+    <section class="text-center">
+        <h1 class="text-xl font-bold tracking-wide hover:text-yellow-500 hover:underline
+            md:text-2xl">
+            <a th:href="@{/}" class="cursor-pointer">Personal Blog</a>
+        </h1>
+
+    </section>
+    <nav class="text-md pt-1">
+        <hr class="my-2 max-w-md mx-auto border border-black md:hidden">
+        <ul class=" list-none font-semibold tracking-wider flex flex-col text-center gap-4
+            sm:mt-2 sm:flex sm:flex-row sm:justify-center sm:items-center sm:gap-14
+            md:text-sm">
+            <li class="py-1 rounded-sm max-sm:active:bg-black">
+                <a th:href="@{${isAdmin} ? @{/admin} : @{/}}"
+
+                   class="py-1 px-4 rounded-lg cursor-pointer hover:bg-yellow-500 focus:bg-yellow-600 active:bg-yellow-700 transition duration-500"
+                >Home
+                </a>
+            </li>
+            <li class="py-1 rounded-sm max-sm:active:bg-yellow-700" th:if="${isAdmin}" >
+                <a th:href="@{/admin/article/create}"
+                   class="py-1 px-4 rounded-lg cursor-pointer
+                    hover:bg-yellow-500 focus:bg-yellow-600 active:bg-yellow-700 transition duration-500"
+                >Create Article</a>
+            </li>
+            <li class="py-1 rounded-sm max-sm:active:bg-black">
+                <a th:href="@{${isAdmin} ? @{/admin/articles} : @{/articles}}"
+                   class="py-1 px-4 rounded-lg cursor-pointer hover:bg-yellow-500 focus:bg-yellow-600 active:bg-yellow-700 transition duration-500"
+                >Articles
+                </a>
+            </li>
+
+            <li class="py-1 rounded-sm max-sm:active:bg-black" th:if="${!isAdmin}">
+                <a th:href="@{/admin}" class="py-1 px-4 rounded-lg cursor-pointer hover:bg-yellow-500 focus:bg-yellow-600 active:bg-yellow-700 transition duration-500"
+                >Admin
+                </a>
+            </li>
+
+            <li class="py-1 rounded-sm max-sm:active:bg-black" th:if="${isAdmin}">
+                <a th:href="@{/logout}" class="py-1 px-4 rounded-lg cursor-pointer hover:bg-yellow-500 focus:bg-yellow-600 active:bg-yellow-700 transition duration-500"
+                >Logout
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
